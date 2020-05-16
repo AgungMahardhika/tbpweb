@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Backend\Academic;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Curriculum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CourseController extends Controller
 {
@@ -15,7 +17,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('klp09.courses.index', compact('courses'));
     }
 
     public function create()
@@ -33,7 +36,19 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!Gate::allows('staffs_manage'))
+        {
+            return abort(403);
+        }
+
+        $request->validate(Course::validation_rules);
+
+        if(Course::create($request->all())){
+            notify('success', 'Berhasil menambahkan data Mata Kuliah');
+        }else{
+            notify('error', 'Gagal menambahkan data Mata Kuliah');
+        }
+        return redirect()->route('backend.courses.index');
     }
 
     /**
@@ -44,7 +59,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $courses = Course::find($id);
+        return view('klp09.courses.show', compact('courses'));
     }
 
     /**
@@ -65,7 +81,7 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         //
     }
@@ -78,6 +94,6 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }
