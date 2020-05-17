@@ -82,6 +82,15 @@
                     </a>
                 </li>
             @endcan
+            
+            @can('staffs_manage')
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{{ route('backend.courses.index') }}">
+                        <i class="cil-book c-sidebar-nav-icon"></i>
+                        Mata Kuliah
+                    </a>
+                </li>
+            @endcan
         @endcanany
 
         <li class="c-sidebar-nav-item">
