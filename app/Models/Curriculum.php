@@ -12,7 +12,7 @@ class Curriculum extends Model
         'name' => 'required',
         'department_id' => 'required',
     ];
-    public function departement()
+  public function departement()
     {
         return $this->belongsTo(Department::class,'department_id','id');
     }
