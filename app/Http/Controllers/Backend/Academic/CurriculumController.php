@@ -17,7 +17,8 @@ class CurriculumController extends Controller
      */
     public function index()
     {
-        //
+       $curriculums = Curriculum::all();
+        return view('klp09.curricula.index', compact('curriculums'));
     }
 
     /**
