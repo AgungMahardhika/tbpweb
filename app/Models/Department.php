@@ -14,9 +14,4 @@ class Department extends Model
     protected $table = 'departments';
 
     protected $guarded = [];
-
-    public function faculty()
-    {
-        return $this->belongsTo(Faculty::class);
-    }
 }

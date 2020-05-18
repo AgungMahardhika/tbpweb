@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend\Academic;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Department;
+use App\Models\Curriculum;
+use Illuminate\Support\Facades\Gate;
 
 class CurriculumController extends Controller
 {
@@ -97,8 +100,20 @@ class CurriculumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Curriculum $curriculum)
     {
-        //
+        if(!Gate::allows('staffs_manage'))
+        {
+            return abort(403);
+        }
+
+        if($curriculum->delete())
+        {
+            notify('success', 'Berhasil menghapus data Kurikulum');
+            return redirect()->route('backend.curricula.index');
+        }else{
+            notify('error', 'Gagal menghapus data Kurikulum');
+            return redirect()->back()->withErrors();
+        }
     }
 }
