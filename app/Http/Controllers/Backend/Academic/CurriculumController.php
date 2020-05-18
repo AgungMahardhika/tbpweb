@@ -58,9 +58,16 @@ class CurriculumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Curriculum $curriculum)
     {
-        //
+        if(!Gate::allows('staffs_manage'))
+        {
+            return abort(403);
+        }
+
+        $departments = Department::all()->pluck('name', 'id');
+
+        return view('klp09.curricula.edit', compact('curriculum','departments'));
     }
 
     /**
@@ -70,9 +77,21 @@ class CurriculumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Curriculum $curriculum)
     {
-        //
+        if(!Gate::allows('staffs_manage'))
+        {
+            return abort(403);
+        }
+
+        $request->validate(Curriculum::validation_rules);
+
+        if($curriculum->update($request->all())){
+            notify('success', 'Berhasil mengubah data Mata Kuliah');
+        }else{
+            notify('error', 'Gagal mengubah data Mata Kuliah');
+        }
+        return redirect()->route('backend.curricula.index');
     }
 
     /**
