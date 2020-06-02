@@ -35,7 +35,7 @@
 
 <!-- Static Field for for SKS Tatap Muka -->
 <div class="form-group">
-    <div class='form-label'>Sks Teori</div>
+    <div class='form-label'>Sks Tatap Muka</div>
     <div>{{ $courses->theory_credit }}</div>
 </div>
 
@@ -51,6 +51,18 @@
     <div>{{ $courses->field_credit }}</div>
 </div>
 
+<!-- Static Field for Semester -->
+<div class="form-group">
+    <div class='form-label'>Semester</div>
+    <div>{{ $courses->semester }}</div>
+</div>
+
+<!-- Static Field for Deskripsi -->
+<div class="form-group">
+    <div class='form-label'>Keterangan Matakuliah</div>
+    <div>{{ $courses->name }}</div>
+</div>
+
 <!-- Static Field for Jenis Mata Kuliah -->
 <div class="form-group">
     <div class='form-label'>Jenis Matakuliah</div>
@@ -59,28 +71,4 @@
     @else($courses->primary == '2')
         <div class="badge badge-lg badge-success">Pilihan</div>
     @endif
-</div>
-
-<!-- Static Field for Semester -->
-<div class="form-group">
-    <div class='form-label'>Semester</div>
-    <div>{{ $courses->semester }}</div>
-</div>
-
-<!-- Static Field for Kurikulum -->
-<div class="form-group">
-    <div class='form-label'>Kurikulum</div>
-    <div>{{ $courses->kurikulum->name }}</div>
-</div>
-
-<!-- Static Field for Jurusan -->
-<div class="form-group">
-    <div class='form-label'>Jurusan</div>
-    <div>{{ $courses->kurikulum->departement->name }}</div>
-</div>
-
-<!-- Static Field for Deskripsi -->
-<div class="form-group">
-    <div class='form-label'>Deskripsi Matakuliah</div>
-    <div>{{ $courses->name }}</div>
 </div>
