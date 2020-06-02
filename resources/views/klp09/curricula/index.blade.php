@@ -24,7 +24,6 @@
             <table class="table table-outline table-hover">
                 <thead class="thead-light">
                 <tr>
-                    <th>Kode Kurikulum</th>
                     <th>Nama Kurikulum</th>
                     <th>Jurusan</th>
                     <th>Status</th>
@@ -34,9 +33,6 @@
                 <tbody>
                 @forelse($curriculums as $curriculum)
                     <tr>
-                        <td>
-                            {{ $curriculum->id }}
-                        </td>
                         <td>
                             {{ $curriculum->name }}
                         </td>
