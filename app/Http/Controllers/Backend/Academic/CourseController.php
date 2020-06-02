@@ -36,7 +36,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Gate::allows('staffs_manage'))
+        if(!Gate::allows('courses_manage'))
         {
             return abort(403);
         }
@@ -71,7 +71,7 @@ class CourseController extends Controller
      */
  public function edit(Course $course)
     {
-        if(!Gate::allows('staffs_manage'))
+        if(!Gate::allows('courses_manage'))
         {
             return abort(403);
         }
@@ -90,7 +90,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        if(!Gate::allows('staffs_manage'))
+        if(!Gate::allows('courses_manage'))
         {
             return abort(403);
         }
