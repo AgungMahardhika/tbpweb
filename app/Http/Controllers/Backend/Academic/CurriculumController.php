@@ -40,7 +40,7 @@ class CurriculumController extends Controller
      */
 public function store(Request $request)
     {
-        if(!Gate::allows('staffs_manage'))
+        if(!Gate::allows('courses_manage'))
         {
             return abort(403);
         }
@@ -74,7 +74,7 @@ public function store(Request $request)
      */
     public function edit(Curriculum $curriculum)
     {
-        if(!Gate::allows('staffs_manage'))
+        if(!Gate::allows('courses_manage'))
         {
             return abort(403);
         }
@@ -93,7 +93,7 @@ public function store(Request $request)
      */
     public function update(Request $request, Curriculum $curriculum)
     {
-        if(!Gate::allows('staffs_manage'))
+        if(!Gate::allows('courses_manage'))
         {
             return abort(403);
         }
@@ -116,7 +116,7 @@ public function store(Request $request)
      */
     public function destroy(Curriculum $curriculum)
     {
-        if(!Gate::allows('staffs_manage'))
+        if(!Gate::allows('courses_manage'))
         {
             return abort(403);
         }
